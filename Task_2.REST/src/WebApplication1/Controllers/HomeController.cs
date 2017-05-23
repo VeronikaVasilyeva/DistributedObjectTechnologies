@@ -1,45 +1,117 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Net;
+using System.Net.Http;
+using System.Text;
+using WebApp.WebUI.Models;
 using Microsoft.AspNetCore.Mvc;
+using WebApp.WebUI.Store;
+using Newtonsoft.Json;
 
-namespace WebApplication1.Controllers
+namespace WebApp.WebUI.Controllers
 {
-    [Route("api/[controller]")]
+    /// <summary>
+    /// Дефолтный контроллер
+    /// </summary>
+    [Route("api")]
     public class HomeController : Controller
     {
-        // GET api/values
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        /// <summary>
+        /// хранилище бланков с кандидатами
+        /// </summary>
+        public static BlankStore BlanksStore = new BlankStore();
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+        /// <summary>
+        /// хранилище голосов
+        /// </summary>
+        public static VoteStore VotesStore = new VoteStore(BlanksStore.Blanks);
 
-        // POST api/values
+        private static readonly Dictionary<string, User> RegistrationStore = new Dictionary<string, User>();
+
+        /// <summary>
+        ///  регистрация пользователя по ФИО   
+        /// </summary>
+        /// <returns>guid</returns>
+        [Route("registration")]
         [HttpPost]
-        public void Post([FromBody]string value)
+        public IActionResult Registration([FromQuery] string username)
         {
+            if (username.Equals("")) return BadRequest("Введите имя");
+
+            if (RegistrationStore.ContainsKey(username))
+            {
+                return BadRequest("Вы уже зарегистрированы"); 
+            }
+            else
+            {
+                string guid = RegistrationStore.Count.ToString();
+                RegistrationStore.Add(username, new User { Guid = guid, Name = username});
+                return Ok(guid);
+            }
         }
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [Route("blanks")]
+        [HttpGet]
+        public List<User> GetAllBlanks()
         {
+            return BlanksStore.Blanks;
         }
 
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        [ApiExplorerSettings(GroupName = "v2")]
-        public void Delete(int id)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [Route("votes")]
+        [HttpGet]
+        public string GetAllVotes()
         {
+            return JsonConvert.SerializeObject(VotesStore.GetVotes(), Formatting.Indented);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [Route("finished")]
+        [HttpGet]
+        public IActionResult Finished([FromQuery] string idUser)
+        {
+            if (RegistrationStore.Count(i => i.Value.Guid.Equals(idUser)) == 0)
+            {
+                return BadRequest("Вы не зарегистрированы");
+            }
+            return Ok("Ваше голосование окончено");
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [Route("votes")]
+        [HttpPost]
+        public IActionResult CastVote([FromQuery] string id, [FromQuery] string candidate)
+        {
+            if (RegistrationStore.Count(i => i.Value.Guid.Equals(id)) == 0)
+            {
+                return BadRequest("Вы не зарегистрированы");
+            }
+
+            if (!VotesStore.AddVote(id, candidate))
+            {
+                return BadRequest("Вы уже голосовали");
+            }
+
+            if (BlanksStore.Blanks.Count(i => i.Guid.Equals(candidate)) == 0)
+            {
+                return BadRequest("Нет такого кандидата");
+            }
+            
+            return Ok("Ваш голос учтен");
         }
     }
 }

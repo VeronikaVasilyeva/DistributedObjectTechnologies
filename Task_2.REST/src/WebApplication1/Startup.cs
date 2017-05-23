@@ -11,7 +11,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.PlatformAbstractions;
 using Swashbuckle.AspNetCore.Swagger;
 
-namespace WebApplication1
+namespace WebApp.WebUI
 {
     public class Startup
     {
@@ -46,10 +46,11 @@ namespace WebApplication1
             {
                 c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
 
+                //TODO: разобраться с отображением документации и этим вот
                 //Set the comments path for the swagger json and ui.
-                var basePath = PlatformServices.Default.Application.ApplicationBasePath;
-                var xmlPath = Path.Combine(basePath, "WebApI.xml");
-                c.IncludeXmlComments(xmlPath);
+                //var basePath = PlatformServices.Default.Application.ApplicationBasePath;
+                //var xmlPath = Path.Combine(basePath, "WebAPI.xml");
+                //c.IncludeXmlComments(xmlPath);
             });
         }
 
