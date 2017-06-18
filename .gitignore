@@ -1,5 +1,6 @@
 *.10.0.exe
 *.2.1.jar
+<<<<<<< HEAD
 
 /packages/
 /.vs/
@@ -317,3 +318,5 @@ tmp/
 .history
 .idea_modules
 .project
+=======
+>>>>>>> 0a29aa5c820093ed7f04e3e668c2d1fe3d700a5d
