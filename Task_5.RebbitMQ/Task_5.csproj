@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{54DBE368-9C9A-46B1-8976-BB81AA9E8338}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Task_5</RootNamespace>
+    <AssemblyName>Task_5</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="RabbitMQ.Client, Version=3.6.2.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
+      <HintPath>..\packages\RabbitMQ.Client.3.6.2\lib\net45\RabbitMQ.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Helpers\CacheHelper.cs" />
+    <Compile Include="Helpers\PerformanceHelper.cs" />
+    <Compile Include="Helpers\SerializeHelper.cs" />
+    <Compile Include="Models\PerformanceMould.cs" />
+    <Compile Include="Services\Server.cs" />
+    <Compile Include="Services\PerformanceProducer.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Consumer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="Client\Libraries\c3-0.4.11\.editorconfig" />
+    <None Include="Client\Libraries\c3-0.4.11\.gitignore" />
+    <None Include="Client\Libraries\c3-0.4.11\.jshintrc" />
+    <None Include="Client\Libraries\c3-0.4.11\.travis.yml" />
+    <None Include="Client\Libraries\c3-0.4.11\bower.json" />
+    <None Include="Client\Libraries\c3-0.4.11\component.json" />
+    <None Include="Client\Libraries\c3-0.4.11\CONTRIBUTING.md" />
+    <None Include="Client\Libraries\c3-0.4.11\extensions\exporter\config.json" />
+    <None Include="Client\Libraries\c3-0.4.11\Gruntfile.coffee" />
+    <None Include="Client\Libraries\c3-0.4.11\htdocs\data\c3_test.csv" />
+    <None Include="Client\Libraries\c3-0.4.11\htdocs\data\c3_test.json" />
+    <None Include="Client\Libraries\c3-0.4.11\htdocs\data\c3_test.tsv" />
+    <None Include="Client\Libraries\c3-0.4.11\htdocs\data\c3_test2.csv" />
+    <None Include="Client\Libraries\c3-0.4.11\htdocs\data\c3_test2_ts.csv" />
+    <None Include="Client\Libraries\c3-0.4.11\htdocs\data\c3_test3.csv" />
+    <None Include="Client\Libraries\c3-0.4.11\htdocs\data\c3_test_2.json" />
+    <None Include="Client\Libraries\c3-0.4.11\htdocs\data\c3_test_3.json" />
+    <None Include="Client\Libraries\c3-0.4.11\htdocs\data\c3_test_ts.csv" />
+    <None Include="Client\Libraries\c3-0.4.11\htdocs\js\extensions" />
+    <None Include="Client\Libraries\c3-0.4.11\LICENSE" />
+    <None Include="Client\Libraries\c3-0.4.11\package.json" />
+    <None Include="Client\Libraries\c3-0.4.11\README.md" />
+    <None Include="Client\Libraries\c3-0.4.11\src\scss\arc.scss" />
+    <None Include="Client\Libraries\c3-0.4.11\src\scss\area.scss" />
+    <None Include="Client\Libraries\c3-0.4.11\src\scss\axis.scss" />
+    <None Include="Client\Libraries\c3-0.4.11\src\scss\bar.scss" />
+    <None Include="Client\Libraries\c3-0.4.11\src\scss\brush.scss" />
+    <None Include="Client\Libraries\c3-0.4.11\src\scss\chart.scss" />
+    <None Include="Client\Libraries\c3-0.4.11\src\scss\focus.scss" />
+    <None Include="Client\Libraries\c3-0.4.11\src\scss\grid.scss" />
+    <None Include="Client\Libraries\c3-0.4.11\src\scss\legend.scss" />
+    <None Include="Client\Libraries\c3-0.4.11\src\scss\line.scss" />
+    <None Include="Client\Libraries\c3-0.4.11\src\scss\main.scss" />
+    <None Include="Client\Libraries\c3-0.4.11\src\scss\point.scss" />
+    <None Include="Client\Libraries\c3-0.4.11\src\scss\region.scss" />
+    <None Include="Client\Libraries\c3-0.4.11\src\scss\select_drag.scss" />
+    <None Include="Client\Libraries\c3-0.4.11\src\scss\text.scss" />
+    <None Include="Client\Libraries\c3-0.4.11\src\scss\title.scss" />
+    <None Include="Client\Libraries\c3-0.4.11\src\scss\tooltip.scss" />
+    <None Include="Client\Libraries\d3\LICENSE" />
+    <None Include="Client\Styles\bootstrap-3.3.6-dist\css\bootstrap-theme.css.map" />
+    <None Include="Client\Styles\bootstrap-3.3.6-dist\css\bootstrap-theme.min.css.map" />
+    <None Include="Client\Styles\bootstrap-3.3.6-dist\css\bootstrap.css.map" />
+    <None Include="Client\Styles\bootstrap-3.3.6-dist\css\bootstrap.min.css.map" />
+    <None Include="Client\Styles\bootstrap-3.3.6-dist\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="Client\Styles\bootstrap-3.3.6-dist\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="Client\Styles\bootstrap-3.3.6-dist\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="Client\Styles\bootstrap-3.3.6-dist\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Client\Index.html" />
+    <Content Include="Client\Libraries\d3\d3.js" />
+    <Content Include="Client\Libraries\d3\d3.min.js" />
+    <Content Include="Client\Scripts\angular.min.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\c3.css" />
+    <Content Include="Client\Libraries\c3-0.4.11\c3.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\c3.min.css" />
+    <Content Include="Client\Libraries\c3-0.4.11\c3.min.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\extensions\chart-bubble\bubble.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\extensions\chart-bubble\c3.css" />
+    <Content Include="Client\Libraries\c3-0.4.11\extensions\chart-bubble\c3.min.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\extensions\chart-bubble\index.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\extensions\exporter\phantom-exporter.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\extensions\exporter\test.png" />
+    <Content Include="Client\Libraries\c3-0.4.11\extensions\js\c3ext.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\css\bootstrap.min.css" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\css\c3.css" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\css\index.css" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\css\style.css" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\index.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\js\c3.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\js\c3.min.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\js\require.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\js\samples\plugin.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\js\samples\requirejs.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\js\samples\zoom_reduction.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\api_axis_label.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\api_axis_range.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\api_category.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\api_data_colors.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\api_flow.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\api_flow_timeseries.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\api_legend.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\api_tooltip_show.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\api_transform.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\api_xgrid_lines.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\api_ygrid_lines.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\area_zerobased.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\axes_padding.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\axes_range.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\axes_x_extent.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\axes_x_localtime.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\axes_x_range_timeseries.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\axes_x_tick_culling.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\axes_x_tick_fit.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\axes_x_tick_rotate.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\axes_x_tick_values.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\axes_y2.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\axes_y_default.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\bar_zerobased.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\bindto.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\categorized.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\chart_area.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\chart_area_spline.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\chart_area_spline_stacked.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\chart_area_stacked.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\chart_area_step.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\chart_area_step_stacked.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\chart_bar.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\chart_bar_stacked.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\chart_combination.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\chart_donut.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\chart_gauge.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\chart_pie.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\chart_pie_sort.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\chart_scatter.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\chart_spline.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\chart_step.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\chart_step_category.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\custom_xs_scale.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\custom_x_categorized.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\custom_x_scale.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\data_columned.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\data_hide.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\data_json.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\data_label.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\data_label_format.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\data_load.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\data_load_timeseries.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\data_region.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\data_region_timeseries.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\data_rowed.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\data_url.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\domain_y.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\element.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\emptydata.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\grids.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\grids_timeseries.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\grid_focus.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\grid_x_lines.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\grid_x_lines_timeseries.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\interaction_enabled.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\legend.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\padding.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\padding_update.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\plugin.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\point_r.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\regions.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\regions_timeseries.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\requirejs.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\selection.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\simple.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\subchart.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\subchart_onbrush.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\timeseries.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\timeseries_date.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\timeseries_descendent.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\timeseries_raw.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\tooltip_grouped.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\tooltip_show.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\zoom.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\zoom_category.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\zoom_onzoom.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\htdocs\samples\zoom_reduction.html" />
+    <Content Include="Client\Libraries\c3-0.4.11\karma.conf.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\spec\api.axis-spec.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\spec\api.data-spec.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\spec\api.focus-spec.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\spec\api.grid-spec.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\spec\api.load-spec.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\spec\api.region-spec.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\spec\api.zoom-spec.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\spec\arc-spec.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\spec\axis-spec.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\spec\c3-helper.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\spec\c3-spec.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\spec\class-spec.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\spec\core-spec.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\spec\data-spec.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\spec\domain-spec.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\spec\grid-spec.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\spec\interaction-spec.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\spec\legend-spec.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\spec\shape.bar-spec.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\spec\shape.line-spec.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\spec\svg-helper.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\spec\title-spec.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\spec\tooltip-spec.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\spec\type-spec.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\spec\zoom-spec.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\api.axis.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\api.category.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\api.chart.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\api.color.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\api.data.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\api.flow.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\api.focus.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\api.grid.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\api.group.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\api.legend.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\api.load.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\api.region.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\api.selection.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\api.show.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\api.tooltip.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\api.transform.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\api.x.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\api.zoom.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\arc.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\axis.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\c3.axis.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\cache.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\category.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\class.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\clip.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\color.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\config.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\core.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\data.convert.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\data.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\data.load.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\domain.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\drag.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\format.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\grid.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\head.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\interaction.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\legend.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\polyfill.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\region.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\scale.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\selection.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\shape.bar.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\shape.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\shape.line.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\size.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\subchart.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\tail.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\text.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\title.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\tooltip.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\type.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\ua.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\util.js" />
+    <Content Include="Client\Libraries\c3-0.4.11\src\zoom.js" />
+    <Content Include="Client\Scripts\index.js" />
+    <Content Include="Client\Scripts\underscore.js" />
+    <Content Include="Client\Styles\bootstrap-3.3.6-dist\css\bootstrap-theme.css" />
+    <Content Include="Client\Styles\bootstrap-3.3.6-dist\css\bootstrap-theme.min.css" />
+    <Content Include="Client\Styles\bootstrap-3.3.6-dist\css\bootstrap.css" />
+    <Content Include="Client\Styles\bootstrap-3.3.6-dist\css\bootstrap.min.css" />
+    <Content Include="Client\Styles\bootstrap-3.3.6-dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Client\Styles\bootstrap-3.3.6-dist\js\bootstrap.js" />
+    <Content Include="Client\Styles\bootstrap-3.3.6-dist\js\bootstrap.min.js" />
+    <Content Include="Client\Styles\bootstrap-3.3.6-dist\js\npm.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 и x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
