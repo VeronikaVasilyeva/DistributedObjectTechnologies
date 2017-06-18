@@ -1,0 +1,92 @@
+﻿<html>
+<head>
+    <title>OpenGraph Parser</title>
+
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/thrift-new.js"></script>
+    <script src="../_thrift-data/gen-js/OpenGraph_types.js"></script>
+    <script src="../_thrift-data/gen-js/OpenGraphService.js"></script>
+
+    <link rel="stylesheet" href="Styles/bootstrap-3.3.6-dist/css/bootstrap.min.css"/>
+</head>
+<body>
+    <div ng-app="myApp">
+        <div class="container">
+            <div ng-controller="mainController">
+                <div class="row" style="margin-top: 10px; margin-bottom: 10px;">
+                    <div class="col-lg-4 col-lg-offset-4">
+                        <input type="text" ng-model="url" style="width: 300px; display: inline;" />
+                        <button ng-click="onclick()">Get meta</button>
+                    </div>
+                </div>
+
+                <div ng-if="meta">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Meta</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Title</td>
+                                <td>{{meta.title}}</td>
+                            </tr>
+                            <tr>
+                                <td>Type</td>
+                                <td>{{meta.type}}</td>
+                            </tr>
+                            <tr>
+                                <td>Image</td>
+                                <td>
+                                    <img src="{{meta.image}}" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Url</td>
+                                <td>
+                                    <a href="{{meta.url}}">{{meta.url}}</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div ng-if="exception">
+                    <p class="bg-danger" style="padding: 10px 40px">
+                        Произошла ошибка: {{exception}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var myApp = angular.module("myApp", []);
+
+        myApp.controller("mainController", [
+            "$scope", function ($scope) {
+                $scope.url = "http://ogp.me/";
+                //$scope.url = "https://blog.kissmetrics.com/open-graph-meta-tags/";
+                //$scope.url = "http://techcrunch.com/2012/01/18/open-graph-websites/";
+                $scope.meta = null;
+
+                $scope.onclick = function () {
+                    var transport = new Thrift.Transport("http://localhost:8080");
+                    var protocol = new Thrift.Protocol(transport);
+                    var client = new OpenGraph.OpenGraphServiceClient(protocol);
+
+                    try {
+                        var meta = client.GetMeta($scope.url);
+                        $scope.exception = null;
+                        $scope.meta = meta;
+                    } catch (ex) {
+                        $scope.meta = null;
+                        $scope.exception = ex.name;
+                    }
+                }
+            }
+        ]);
+    </script>
+</body>
+</html>

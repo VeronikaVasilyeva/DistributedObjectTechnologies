@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E4C1CA56-FA65-4419-B88B-291A729D13B6}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Server</RootNamespace>
+    <AssemblyName>Server</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.6\lib\Net45\HtmlAgilityPack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="OpenGraph-Net, Version=1.2.0.1, Culture=neutral, PublicKeyToken=2f6a5503306c493e, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenGraph-Net.1.2.0.1\lib\net45\OpenGraph-Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Thrift, Version=0.9.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ApacheThrift.0.9.3\lib\Thrift.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Implementations\OpenGraphHandler.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="_thrift-data\gen-csharp\OpenGraph\MetaNotFoundException.cs" />
+    <Compile Include="_thrift-data\gen-csharp\OpenGraph\NetException.cs" />
+    <Compile Include="_thrift-data\gen-csharp\OpenGraph\NotFoundException.cs" />
+    <Compile Include="_thrift-data\gen-csharp\OpenGraph\OpenGraphMeta.cs" />
+    <Compile Include="_thrift-data\gen-csharp\OpenGraph\OpenGraphService.cs" />
+    <Compile Include="_thrift-data\gen-csharp\OpenGraph\UnknownException.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="frontend\Styles\bootstrap-3.3.6-dist\css\bootstrap-theme.css.map" />
+    <None Include="frontend\Styles\bootstrap-3.3.6-dist\css\bootstrap-theme.min.css.map" />
+    <None Include="frontend\Styles\bootstrap-3.3.6-dist\css\bootstrap.css.map" />
+    <None Include="frontend\Styles\bootstrap-3.3.6-dist\css\bootstrap.min.css.map" />
+    <None Include="frontend\Styles\bootstrap-3.3.6-dist\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="frontend\Styles\bootstrap-3.3.6-dist\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="frontend\Styles\bootstrap-3.3.6-dist\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="frontend\Styles\bootstrap-3.3.6-dist\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="frontend\Index.html" />
+    <Content Include="frontend\Scripts\angular.min.js" />
+    <Content Include="frontend\Scripts\thrift-new.js" />
+    <Content Include="frontend\Styles\bootstrap-3.3.6-dist\css\bootstrap-theme.css" />
+    <Content Include="frontend\Styles\bootstrap-3.3.6-dist\css\bootstrap-theme.min.css" />
+    <Content Include="frontend\Styles\bootstrap-3.3.6-dist\css\bootstrap.css" />
+    <Content Include="frontend\Styles\bootstrap-3.3.6-dist\css\bootstrap.min.css" />
+    <Content Include="frontend\Styles\bootstrap-3.3.6-dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="frontend\Styles\bootstrap-3.3.6-dist\js\bootstrap.js" />
+    <Content Include="frontend\Styles\bootstrap-3.3.6-dist\js\bootstrap.min.js" />
+    <Content Include="frontend\Styles\bootstrap-3.3.6-dist\js\npm.js" />
+    <Content Include="_thrift-data\gen-js\OpenGraphService.js" />
+    <Content Include="_thrift-data\gen-js\OpenGraph_types.js" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
